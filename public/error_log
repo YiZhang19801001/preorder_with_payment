@@ -1,0 +1,1 @@
+[28-Dec-2018 03:38:03 UTC] PHP Fatal error:  Cannot use temporary expression in write context in /home1/ozwearug/public_html/kidsnpartycom/table4/app/Http/Controllers/CategoryController.php on line 32

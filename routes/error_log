@@ -1,0 +1,16 @@
+[13-Jan-2019 23:03:29 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Artisan' not found in /home1/ozwearug/public_html/kidsnpartycom/table/routes/console.php:16
+Stack trace:
+#0 {main}
+  thrown in /home1/ozwearug/public_html/kidsnpartycom/table/routes/console.php on line 16
+[13-Jan-2019 23:04:58 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Artisan' not found in /home1/ozwearug/public_html/kidsnpartycom/table/routes/console.php:16
+Stack trace:
+#0 {main}
+  thrown in /home1/ozwearug/public_html/kidsnpartycom/table/routes/console.php on line 16
+[13-Jan-2019 23:05:03 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Route' not found in /home1/ozwearug/public_html/kidsnpartycom/table/routes/api.php:19
+Stack trace:
+#0 {main}
+  thrown in /home1/ozwearug/public_html/kidsnpartycom/table/routes/api.php on line 19
+[13-Jan-2019 23:05:07 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Route' not found in /home1/ozwearug/public_html/kidsnpartycom/table/routes/api.php:19
+Stack trace:
+#0 {main}
+  thrown in /home1/ozwearug/public_html/kidsnpartycom/table/routes/api.php on line 19
