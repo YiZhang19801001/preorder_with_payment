@@ -28,6 +28,7 @@ export default class Confirm extends Component {
     this.payment = this.payment.bind(this);
     this.renderPayment = this.renderPayment.bind(this);
     this.handlePaymentMethodChange = this.handlePaymentMethodChange.bind(this);
+    this.cancelOrder = this.cancelOrder.bind(this);
   }
 
   componentDidMount() {
@@ -224,6 +225,17 @@ export default class Confirm extends Component {
       </div>
     );
   }
+
+  cancelOrder() {
+    Axios.post(`/redpay/public/api/payments/cancel`, {
+      version: "1.0",
+      mchNo: "77902",
+      mchOrderNo: this.state.order_no,
+      timestamp: timestamps
+    }).then(res => {
+      this.setState({ isLoading: false });
+    });
+  }
   render() {
     const qr_section = (
       <div className="qrcode-section">
@@ -256,9 +268,7 @@ export default class Confirm extends Component {
             </div>
             <div className="payment-section__footer">
               <div
-                onClick={() => {
-                  this.setState({ isLoading: false });
-                }}
+                onClick={this.canncelOrder}
                 className="payment-section__footer-button"
               >
                 Cancel
