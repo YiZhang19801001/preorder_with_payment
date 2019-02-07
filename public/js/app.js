@@ -71845,6 +71845,7 @@ var Confirm = function (_Component) {
     _this.payment = _this.payment.bind(_this);
     _this.renderPayment = _this.renderPayment.bind(_this);
     _this.handlePaymentMethodChange = _this.handlePaymentMethodChange.bind(_this);
+    _this.cancelOrder = _this.cancelOrder.bind(_this);
     return _this;
   }
 
@@ -72065,9 +72066,26 @@ var Confirm = function (_Component) {
       );
     }
   }, {
+    key: "cancelOrder",
+    value: function cancelOrder() {
+      var _this5 = this;
+
+      console.log(this.state.order_no);
+      var today = new Date();
+      var timestamps = Math.floor(today / 1000);
+      __WEBPACK_IMPORTED_MODULE_3_axios___default.a.post("/redpay/public/api/payments/cancel", {
+        version: "1.0",
+        mchNo: "77902",
+        mchOrderNo: this.state.order_no,
+        timestamp: timestamps
+      }).then(function (res) {
+        _this5.setState({ isLoading: false });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       var qr_section = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
@@ -72110,9 +72128,7 @@ var Confirm = function (_Component) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               "div",
               {
-                onClick: function onClick() {
-                  _this5.setState({ isLoading: false });
-                },
+                onClick: this.cancelOrder,
                 className: "payment-section__footer-button"
               },
               "Cancel"
@@ -72147,7 +72163,7 @@ var Confirm = function (_Component) {
                 "div",
                 {
                   onClick: function onClick() {
-                    _this5.setState({ isShowConfirm: false });
+                    _this6.setState({ isShowConfirm: false });
                   },
                   className: "cancel-button"
                 },
@@ -72289,7 +72305,7 @@ var Confirm = function (_Component) {
             "span",
             {
               onClick: function onClick() {
-                _this5.setState({ isShowConfirm: true });
+                _this6.setState({ isShowConfirm: true });
               },
               className: "confirm__footer__button"
             },

@@ -227,6 +227,9 @@ export default class Confirm extends Component {
   }
 
   cancelOrder() {
+    console.log(this.state.order_no);
+    const today = new Date();
+    const timestamps = Math.floor(today / 1000);
     Axios.post(`/redpay/public/api/payments/cancel`, {
       version: "1.0",
       mchNo: "77902",
@@ -268,7 +271,7 @@ export default class Confirm extends Component {
             </div>
             <div className="payment-section__footer">
               <div
-                onClick={this.canncelOrder}
+                onClick={this.cancelOrder}
                 className="payment-section__footer-button"
               >
                 Cancel
