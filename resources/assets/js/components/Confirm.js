@@ -149,25 +149,31 @@ export default class Confirm extends Component {
     var win = window.open("_blank");
     const today = new Date();
     const timestamps = Math.floor(today / 1000);
-    const mchOrderNo = `123456789999666${Math.round(Math.random() * 1000)}`;
+    const mchOrderNo = `${today.getFullYear()}${today.getDate()}${today.getMonth()}${Math.round(
+      Math.random() * 1000
+    )}`;
     Axios.post(`/redpay/public/api/payments/create`, {
-      version: "1.0",
-      mchNo: "77902",
-      storeNo: "77911",
+      version: this.props.app_conf.version,
+      mchNo: this.props.app_conf.mchNo,
+      storeNo: this.props.app_conf.storeNo,
       mchOrderNo: mchOrderNo,
       channel: this.state.paymentMethod,
-      payWay: "BUYER_SCAN_TRX_QRCODE",
-      currency: "AUD",
+      payWay: this.props.app_conf.payWay,
+      currency: this.props.app_conf.currency,
       amount: this.getTotalPrice(),
-      notifyUrl: "http://kidsnparty.com.au/table4/public/api/payment",
-      returnUrl: "https://wap.redpayments.com.au/pay/success",
-      item: "Clothes",
-      quantity: 1,
+      notifyUrl: this.props.app_conf.notifyUrl,
+      returnUrl: this.props.app_conf.returnUrl,
+      item: this.props.app_conf.item,
+      quantity: this.getOrderItemQuantityTotal(),
       timestamp: timestamps,
-      params: '{"buyerId":285502587945850268}',
-      sign: "3598365168a172a2e62bdb14c104de9e"
+      params: this.props.app_conf.params
     }).then(res => {
       // this.setState({ order_no: res.data.data.mchOrderNo });
+      if (res.data) {
+        console.log("qrcode_image: ", res.data.data.picUrl);
+      } else {
+        console.log("create redpay order fail!");
+      }
       this.setState({ order_no: mchOrderNo });
       console.log(res.data);
       win.location = res.data.data.qrCode;
@@ -202,7 +208,7 @@ export default class Confirm extends Component {
             <input
               type="radio"
               name="payment_method"
-              value="ALIPAY"
+              value="WECHAT"
               onChange={this.handlePaymentMethodChange}
             />
             <span className="payment-section__check-mark-wrapper">

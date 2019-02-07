@@ -19,6 +19,20 @@ return [
     // with payment or not
     'withPayment' => true,
 
+    /** payment */
+    "version" => "1.0",
+    "mchNo" => "77902",
+    "storeNo" => "77911",
+
+    "payWay" => "BUYER_SCAN_TRX_QRCODE",
+    "currency" => "AUD",
+
+    "notifyUrl" => "http://kidsnparty.com.au/table4/public/api/payment",
+    "returnUrl" => "https://wap.redpayments.com.au/pay/success",
+    "item" => "Food",
+
+    "params" => '{"buyerId":285502587945850268}',
+
 /** End */
 
     /*
