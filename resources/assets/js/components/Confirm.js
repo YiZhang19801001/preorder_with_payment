@@ -146,7 +146,7 @@ export default class Confirm extends Component {
 
   payment() {
     this.setState({ isLoading: true });
-    var win = window.open("_blank");
+
     const today = new Date();
     const timestamps = Math.floor(today / 1000);
     const mchOrderNo = `${today.getFullYear()}${today.getDate()}${today.getMonth()}${Math.round(
@@ -175,8 +175,9 @@ export default class Confirm extends Component {
         console.log("create redpay order fail!");
       }
       this.setState({ order_no: mchOrderNo });
+
       console.log(res.data);
-      win.location = res.data.data.qrCode;
+      window.location.href = res.data.data.qrCode;
     });
   }
 

@@ -71967,7 +71967,7 @@ var Confirm = function (_Component) {
       var _this4 = this;
 
       this.setState({ isLoading: true });
-      var win = window.open("_blank");
+      alert("ok ok!");
       var today = new Date();
       var timestamps = Math.floor(today / 1000);
       var mchOrderNo = "" + today.getFullYear() + today.getDate() + today.getMonth() + Math.round(Math.random() * 1000);
@@ -71994,8 +71994,9 @@ var Confirm = function (_Component) {
           console.log("create redpay order fail!");
         }
         _this4.setState({ order_no: mchOrderNo });
+        alert("ok!");
         console.log(res.data);
-        win.location = res.data.data.qrCode;
+        window.location.href = res.data.data.qrCode;
       });
     }
   }, {
